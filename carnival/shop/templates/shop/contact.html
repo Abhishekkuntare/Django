@@ -1,0 +1,34 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} Contanct- Carnival {% endblock %}
+{% block body%}
+<div class="container my-3">
+    <h3>Contact Us</h3>
+    <form action="/shop/contact/" method="post">{% csrf_token %}
+
+        <div class="mb-3">
+
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name">
+
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email">
+
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone number</label>
+            <input type="number" class="form-control" id="phone" placeholder="Enter your name" name="phone">
+
+        </div>
+        <div class="form-floating">
+            <label for="floatingTextarea2">Comments</label>
+            <textarea class="form-control" placeholder="Leave a comment here" id="desc" name="desc"
+                style="height: 100px"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary my-3">Submit</button>
+    </form>
+
+</div>
+{% endblock%}

@@ -1,0 +1,6 @@
+
+1. Create a models 
+2. When we changes the admin panels use :- python manage.py makemigration
+3. For changing the databases: - python manage.py migrate
+4. Then go to admin.py and register the data
+5. Then go to views.py and adding the users

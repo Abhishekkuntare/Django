@@ -1,0 +1,72 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} {{product.product_name}}- Carnival {% endblock %}
+{% block body%}
+
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-4">
+
+            <div class="row">
+                <img src="/media/{{product.image}}" width="300px" height="300px" alt="">
+            </div>
+
+            <div class="row">
+                <button class="btn btn-primary mx-4 mt-4">Buy Now</button>
+                <button class="btn btn-info mx-4 mt-4">Add to Cart</button>
+            </div>
+
+        </div>
+
+
+        <div class="col-md-8">
+            <h5>{{product.product_name}}</h5>
+            <p><b>Rs.{{product.price}}</b></p>
+            <p>{{product.desc}}</p>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock%}
+
+{% block js%}
+
+
+
+<!-- Add to cart funconality -->
+<script>console.log("Working")
+
+
+    // 1.getting the item with class cart 
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+    }
+    else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        document.getElementById('cart').innerHTML = Object.keys(cart).length;
+    }
+
+    //2. jQuery for cliking the buttions 
+    $('.cart').click(function () {
+        console.log("Clicked")
+        var idstr = this.id.toString();
+        console.log(idstr)
+
+        //3. apply the increment counter of cart 
+        if (cart[idstr] != undefined) {
+            cart[idstr] = cart[idstr] + 1;
+        }
+        else {
+            cart[idstr] = 1;
+        }
+        console.log(cart)
+
+        // 4. finally save the data in localStorage 
+        localStorage.setItem('cart', JSON.stringify(cart))
+
+        // 5. add to cart functanlity working 
+        document.getElementById('cart').innerHTML = Object.keys(cart).length;
+    });
+</script>
+{% endblock %}
